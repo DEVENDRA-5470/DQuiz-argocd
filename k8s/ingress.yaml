@@ -3,13 +3,10 @@ kind: Ingress
 metadata:
   name: dquiz-ingress
   namespace: dquiz
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: "54.186.112.111.nip.io"
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
