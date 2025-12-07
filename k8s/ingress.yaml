@@ -17,3 +17,11 @@ spec:
                 name: dquiz-frontend-service
                 port:
                   number: 3000
+
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: dquiz-backend-service
+                port:
+                  number: 5000

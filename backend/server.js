@@ -13,10 +13,14 @@ const app = express();
 // ✅ FIXED CORS (MUST COME BEFORE express.json() AND ROUTES)
 app.use(
   cors({
-    origin: "http://3.14.141.236:32001",   // frontend URL
-    credentials: true,                    // allow cookies/tokens
+    origin: function (origin, callback) {
+      callback(null, true); // allow all
+    },
+    credentials: true,
   })
 );
+
+
 
 // Optional but recommended for cookies
 app.use((req, res, next) => {

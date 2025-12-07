@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dquiz-backend
-  namespace: dquiz
+  labels:
+    app: dquiz-backend
 spec:
   replicas: 2
   selector:
@@ -14,11 +15,17 @@ spec:
         app: dquiz-backend
     spec:
       containers:
-        - name: backend
-          image: deviliam/dquiz-backend-1:latest   # CHANGE THIS to your real image
+        - name: dquiz-backend
+          image: deviliam/dquiz-backend-1:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           env:
+            - name: MONGO_URI
+              value: "mongodb+srv://ysdevn_db_user:devquiz%40123@cluster0.vrd0v5v.mongodb.net/DQuiz"
+
             - name: PORT
               value: "5000"
-          imagePullPolicy: Always
+
+            - name: JWT_SECRET
+              value: "superstrongsecretkey123"
