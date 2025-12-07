@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dquiz-frontend
+  namespace: dquiz
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dquiz-frontend
+  template:
+    metadata:
+      labels:
+        app: dquiz-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: devil/dquiz-frontend-1:latest   # CHANGE THIS to your real image
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: "http://dquiz-backend-service.dquiz.svc.cluster.local:5000"
