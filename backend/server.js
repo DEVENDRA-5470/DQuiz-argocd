@@ -31,7 +31,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
-  res.send("DQuiz API Backend Running 🧑‍💻✅😊");
+  res.send("DQuiz API Backend Run");
 });
 
 app.get("/api/admin/student-count", getStudentCount);
