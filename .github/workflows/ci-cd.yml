@@ -7,7 +7,6 @@ on:
     paths:
       - 'backend/**'
       - 'frontend/**'
-  workflow_dispatch:
 
 jobs:
 
@@ -15,6 +14,7 @@ jobs:
     name: Build & Push Backend Image
     runs-on: ubuntu-latest
 
+    # Run ONLY if backend folder changed
     if: contains(join(github.event.commits.*.modified), 'backend/')
 
     steps:
@@ -40,6 +40,7 @@ jobs:
     name: Build & Push Frontend Image
     runs-on: ubuntu-latest
 
+    # Run ONLY if frontend folder changed
     if: contains(join(github.event.commits.*.modified), 'frontend/')
 
     steps:
