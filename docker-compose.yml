@@ -1,0 +1,27 @@
+services:
+
+  backend:
+    build: ./backend
+    container_name: dquiz-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env      # path FIXED
+    networks:
+      - dquiz_net
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: dquiz-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    networks:
+      - dquiz_net
+    restart: unless-stopped
+
+networks:
+  dquiz_net:
+    driver: bridge
