@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: devil/dquiz-backend-1:latest   # CHANGE THIS to your real image
+          image: deviliam/dquiz-backend-1:latest   # CHANGE THIS to your real image
           ports:
             - containerPort: 5000
           env:

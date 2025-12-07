@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: devil/dquiz-frontend-1:latest   # CHANGE THIS to your real image
+          image: deviliam/dquiz-frontend-1:latest   # CHANGE THIS to your real image
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
